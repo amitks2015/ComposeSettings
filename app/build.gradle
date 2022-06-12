@@ -49,11 +49,31 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
-    implementation 'androidx.activity:activity-compose:1.4.1'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.0.0-alpha13'
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1") {
+        because("provide functionality for accessing viewmodels within composable functions")
+    }
+
+    implementation("androidx.activity:activity-compose:1.4.0") {
+        because("provides access to the `ComponentActivity` class that can be used to compose UI components")
+    }
+
+    implementation("androidx.compose.foundation:foundation:$compose_version") {
+        because("foundational classes from the Compose APIs")
+    }
+
+    implementation("androidx.compose.ui:ui:$compose_version") {
+        because("provides UI components from the Compose APIs")
+    }
+
+    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version") {
+        because("provides tooling functionality for Composables, such as previews")
+    }
+
+    implementation("androidx.compose.material3:material3:1.0.0-alpha13") {
+        because("provides Material Design components from the Compose APIs")
+    }
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
