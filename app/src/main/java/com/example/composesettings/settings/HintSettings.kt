@@ -3,7 +3,8 @@ package com.example.composesettings.settings
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material3.Switch
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,32 +17,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composesettings.R
 import com.example.composesettings.SettingItem
-import com.example.composesettings.ui.theme.ComposeSettingsTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NotificationSettings(
+fun HintSettingsItems(
     modifier: Modifier = Modifier,
     title: String,
     checked: Boolean,
-    onToggleNotificationSetting: () -> Unit
+    onCheckChanged: () -> Unit
 ) {
-    SettingItem(
-        modifier = modifier
-    ) {
+    SettingItem(modifier = modifier) {
         val notificationStateDescription = if(checked) {
-            stringResource(id = R.string.cd_notification_enabled)
+            stringResource(id = R.string.cd_hints_enabled)
         } else{
-            stringResource(id = R.string.cd_notification_disabled)
+            stringResource(id = R.string.cd_hints_disabled)
         }
 
         Row (
             modifier = Modifier
                 .toggleable(
                     value = checked,
-                    onValueChange = {
-                        onToggleNotificationSetting()
-                    },
-                    role = Role.Switch
+                    onValueChange = { onCheckChanged() },
+                    role = Role.Checkbox
                 )
                 .semantics {
                     stateDescription = notificationStateDescription
@@ -55,7 +52,7 @@ fun NotificationSettings(
                 modifier = Modifier.weight(weight = 1f),
                 text = title
             )
-            Switch(
+            Checkbox(
                 checked = checked,
                 onCheckedChange = null
             )
@@ -65,12 +62,6 @@ fun NotificationSettings(
 
 @Preview
 @Composable
-fun NotificationSettingsPreview() {
-    ComposeSettingsTheme {
-        NotificationSettings(
-            title = "Notification Settings",
-            checked = true,
-            onToggleNotificationSetting = {}
-        )
-    }
+fun HintSettingsPreview() {
+    HintSettingsItems(title = "Show Hints", checked = true, onCheckChanged = {})
 }

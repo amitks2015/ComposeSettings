@@ -4,10 +4,13 @@
     <string name="theme_dark">Dark</string>
     <string name="theme_system">System</string>
     <string name="title_settings">Settings</string>
-    <string name="title_notification_settings">Enable notifications</string>
+    <string name="title_notification_settings">Enable Notifications</string>
+    <string name="title_hint_settings">Show Hints</string>
 
     <!-- Content descriptions -->
     <string name="cd_navigate_back">Go back</string>
     <string name="cd_notification_enabled">Notification enabled</string>
     <string name="cd_notification_disabled">Notification disabled</string>
+    <string name="cd_hints_enabled">Hints enabled</string>
+    <string name="cd_hints_disabled">Hints disabled</string>
 </resources>
