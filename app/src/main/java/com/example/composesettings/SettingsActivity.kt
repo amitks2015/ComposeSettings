@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composesettings.settings.HintSettingsItems
+import com.example.composesettings.settings.ManageSubscriptionSettingItem
 import com.example.composesettings.settings.NotificationSettings
 import com.example.composesettings.settings.SettingsState
 import com.example.composesettings.ui.theme.ComposeSettingsTheme
@@ -71,6 +72,14 @@ fun SettingsList(
             title = stringResource(id = R.string.title_hint_settings),
             checked = state.hintsEnabled,
             onCheckChanged = viewModel::toggleHintEnabled
+        )
+        Divider()
+        ManageSubscriptionSettingItem(
+            modifier = Modifier.fillMaxWidth(),
+            title = stringResource(id = R.string.title_manage_subscription),
+            onSettingClicked = {
+                //TODO: Handle settings click
+            }
         )
         Divider()
     }
