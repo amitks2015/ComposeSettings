@@ -20,10 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.composesettings.settings.HintSettingsItems
-import com.example.composesettings.settings.ManageSubscriptionSettingItem
-import com.example.composesettings.settings.NotificationSettings
-import com.example.composesettings.settings.SettingsState
+import com.example.composesettings.settings.*
 import com.example.composesettings.ui.theme.ComposeSettingsTheme
 
 class SettingsActivity : ComponentActivity() {
@@ -82,6 +79,7 @@ fun SettingsList(
             }
         )
         Divider()
+        SectionSpacer(modifier = Modifier.fillMaxWidth())
     }
 }
 
