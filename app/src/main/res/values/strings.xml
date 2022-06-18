@@ -7,6 +7,11 @@
     <string name="title_notification_settings">Enable Notifications</string>
     <string name="title_hint_settings">Show Hints</string>
     <string name="title_manage_subscription">Manage Subscription</string>
+    <string name="title_marketing_settings">Receive marketing emails?</string>
+    <string-array name="marketing_options">
+        <item>Opt-in for marketing emails</item>
+        <item>Don\'t send me emails</item>
+    </string-array>
 
     <!-- Content descriptions -->
     <string name="cd_navigate_back">Go back</string>

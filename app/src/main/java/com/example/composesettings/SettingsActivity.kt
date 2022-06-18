@@ -80,6 +80,13 @@ fun SettingsList(
         )
         Divider()
         SectionSpacer(modifier = Modifier.fillMaxWidth())
+        MarketingSettings(
+            modifier = Modifier.fillMaxWidth(),
+            title = stringResource(id = R.string.title_marketing_settings),
+            selectedOption = state.marketingOption,
+            onOptionSelected = viewModel::setMarketingSetting
+        )
+        Divider()
     }
 }
 
