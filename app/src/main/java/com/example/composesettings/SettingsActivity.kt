@@ -87,6 +87,13 @@ fun SettingsList(
             onOptionSelected = viewModel::setMarketingSetting
         )
         Divider()
+        ThemeSettingItem(
+            modifier = Modifier.fillMaxWidth(),
+            title = stringResource(id = R.string.title_theme_settings),
+            selectedTheme = state.themeOption,
+            onThemeSelected = viewModel::setTheme
+        )
+        SectionSpacer(modifier = Modifier.fillMaxWidth())
     }
 }
 
