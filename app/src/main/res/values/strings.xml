@@ -13,6 +13,9 @@
         <item>Don\'t send me emails</item>
     </string-array>
     <string name="title_theme_settings">Theme</string>
+    <string name="title_app_version_setting">App Version</string>
+    <string name="app_version">1.1.1</string>
+
 
     <!-- Content descriptions -->
     <string name="cd_navigate_back">Go back</string>

@@ -94,6 +94,11 @@ fun SettingsList(
             onThemeSelected = viewModel::setTheme
         )
         SectionSpacer(modifier = Modifier.fillMaxWidth())
+        AppVersionSettingItem(
+            modifier = Modifier.fillMaxWidth(),
+            appVersion = stringResource(id = R.string.app_version)
+        )
+        Divider()
     }
 }
 
