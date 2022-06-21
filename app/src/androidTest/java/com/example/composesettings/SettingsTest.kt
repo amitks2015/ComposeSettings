@@ -5,6 +5,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.composesettings.Tags.TAG_TOGGLE_ITEM
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -12,6 +13,13 @@ class SettingsTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
+
+    @Before
+    fun setup() {
+        composeTestRule.setContent {
+            Settings()
+        }
+    }
 
     @Test
     fun test_notifications_setting_is_displayed() {
@@ -45,9 +53,6 @@ class SettingsTest {
 
     @Test
     fun test_notification_setting_enable_state() {
-        composeTestRule.setContent {
-            Settings()
-        }
         composeTestRule.onNodeWithText(
             text = InstrumentationRegistry.getInstrumentation()
                 .targetContext.getString(R.string.title_notification_settings)
@@ -61,19 +66,38 @@ class SettingsTest {
 
     @Test
     fun test_hint_setting_enable_state() {
-        composeTestRule.setContent {
-            Settings()
-        }
         composeTestRule.onNodeWithText(
             text = InstrumentationRegistry.getInstrumentation()
                 .targetContext.getString(R.string.title_hint_settings)
         ).performClick().assertIsOn()
     }
 
+    @Test
+    fun test_marketing_setting_allowed_selection() {
+        composeTestRule.onNodeWithText(
+            text = InstrumentationRegistry.getInstrumentation()
+                .targetContext.resources.getStringArray(R.array.marketing_options)[0]
+        ).performClick().assertIsSelected()
+
+        composeTestRule.onNodeWithText(
+            text = InstrumentationRegistry.getInstrumentation()
+                .targetContext.resources.getStringArray(R.array.marketing_options)[1]
+        ).assertIsNotSelected()
+    }
+
+    @Test
+    fun test_marketing_not_allowed_selected() {
+        composeTestRule.onNodeWithText(
+            text = InstrumentationRegistry.getInstrumentation()
+                .targetContext.resources.getStringArray(R.array.marketing_options)[1]
+        ).performClick().assertIsSelected()
+        composeTestRule.onNodeWithText(
+            text = InstrumentationRegistry.getInstrumentation()
+                .targetContext.resources.getStringArray(R.array.marketing_options)[0]
+        ).assertIsNotSelected()
+    }
+
     private fun assertSettingIsDisplayed( @StringRes title: Int) {
-        composeTestRule.setContent {
-            Settings()
-        }
         composeTestRule.onNodeWithText(
             text = InstrumentationRegistry.getInstrumentation()
                 .targetContext.getString(title)
