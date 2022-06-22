@@ -9,12 +9,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.example.composesettings.R
 import com.example.composesettings.SettingItem
+import com.example.composesettings.Tags.TAG_SELECT_THEME
+import com.example.composesettings.Tags.TAG_THEME
+import com.example.composesettings.Tags.TAG_THEME_OPTION
 
 @Composable
 fun ThemeSettingItem(
@@ -32,7 +36,8 @@ fun ThemeSettingItem(
                 ) {
                     expanded = !expanded
                 }
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .testTag(TAG_SELECT_THEME),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
@@ -40,6 +45,7 @@ fun ThemeSettingItem(
                 text = title,
             )
             Text(
+                modifier = Modifier.testTag(TAG_THEME),
                 text = stringResource(id = selectedTheme.label)
             )
         }
@@ -50,6 +56,7 @@ fun ThemeSettingItem(
         ) {
             Theme.values().forEach {
                 DropdownMenuItem(
+                    modifier = Modifier.testTag(TAG_THEME_OPTION + stringResource(id = it.label)),
                     text = {
                         Text(text = stringResource(id = it.label))
                     },
